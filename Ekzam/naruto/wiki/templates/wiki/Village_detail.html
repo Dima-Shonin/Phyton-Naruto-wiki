@@ -1,0 +1,40 @@
+{% extends 'wiki/content_base.html' %}
+{% block title %} NarutoWiki {% endblock %}
+
+
+
+
+
+{%block content%}
+<h1 class="text-center ">{{village}}</h1>
+<div class="row">
+
+    <div class="col-4">
+            <img src="{{ village.picture.url }}" class="img-fluid">
+    </div>
+
+    <div class="col-6">
+        <h4>О Деревне</h4>
+        {% if village.description %}
+            <h5>{{village.description.read.decode}}</h5>
+        {% endif %}
+    </div>
+
+    <div class="col-2">
+        <h4>Жители</h4>
+        {% for shinobi in village.shinobi_set.all%}
+        <a href="{% url 'wiki:Shinobi_detail' shinobi.id %}">
+            <p>{{shinobi}}</p>
+        </a>
+        {%endfor%}
+    </div>
+
+
+
+
+</div>
+
+
+{% endblock %}
+
+

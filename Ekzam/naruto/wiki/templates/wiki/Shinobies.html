@@ -1,0 +1,27 @@
+{% extends 'wiki/content_base.html' %}
+{% block title %} NarutoWiki {% endblock %}
+
+
+
+
+
+{%block content%}
+<div class=" row ">
+    {%for shinobi in shinobies%}
+    <div class="col-6" >
+        <img src="{{ shinobi.picture.url }}" width="350" height="200"  class="rounded mx-auto d-block">
+
+          <h4 class="text-center ">
+            <a href="{% url 'wiki:Shinobi_detail' shinobi.id %}">
+              {{shinobi}}
+            </a>
+          </h4>
+    </div>
+    {%endfor%}
+</div>
+
+
+
+{% endblock %}
+
+

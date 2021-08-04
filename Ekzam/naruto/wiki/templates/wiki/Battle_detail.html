@@ -1,0 +1,38 @@
+{% extends 'wiki/content_base.html' %}
+{% block title %} NarutoWiki {% endblock %}
+
+{%block content%}
+<h1 class="text-center ">{{battle}}</h1>
+<div class="row">
+
+    <div class="col-4">
+            <img src="{{ battle.picture.url }}" class="img-fluid">
+    </div>
+
+
+
+    <div class="col-6">
+        <h4>Описание</h4>
+        {% if battle.description %}
+            <h5>{{battle.description.read.decode}}</h5>
+        {% endif %}
+    </div>
+
+    <div class="col-2">
+        <h4>Учасники</h4>
+
+        {% for shinobi in battle.shinobi_set.all%}
+            <a href="{% url 'wiki:Shinobi_detail' shinobi.id %}">
+                <p>{{shinobi}}</p>
+            </a>
+        {%endfor%}
+
+    </div>
+
+
+</div>
+
+
+{% endblock %}
+
+

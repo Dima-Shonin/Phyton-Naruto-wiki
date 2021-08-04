@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">    
+    <title>NarutoViki</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" ></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        class ShinobiBlock extends React.Component{
+            render()
+            {
+                return (
+
+                    <div style = {{
+                        width : 250 , display : 'inline-block',margin : 10 ,padding : 10,
+                        boxShadow : '10px 10px 10px yellow' , border : '1px solid green'
+                    }}> 
+                        <h3> {this.props.shinobi.name}  </h3>
+                        <p>Из {this.props.shinobi.village} </p>
+                            
+                    </div>
+                );
+            }
+        }
+
+        class App extends React.Component{
+            constructor(props){
+                super(props);
+                this.state = {
+                    shinobies : [],
+                };
+            }
+
+            componentDidMount()
+            {
+                console.log('componentDidMount');
+                this.getDataFromDjango();
+            }
+
+            getDataFromDjango = async () => {
+                const URL = 'http://127.0.0.1:8000/NarutoWiki/api/shinobi/all';
+                console.log('Get DATA FROM DJANGO');
+                const apiUrl = await fetch(URL ,{
+                    method : 'GET',
+                    headers : {"Content-Type" : "application/json",                    
+                        "Access-Control-Allow-Origin" : "*"}
+                });
+                const data = await apiUrl.json();
+                console.log(data);
+                this.setState({
+                    shinobies : data,
+                });
+            }
+
+
+            renderShinobies = () =>
+            {
+                return this.state.shinobies.map((shinobi , idx) => <ShinobiBlock shinobi = {shinobi} key = {idx} /> );
+            }
+
+
+            render(){
+                return(
+                    <div> 
+                        <h1> NarutoViki </h1>
+                        { this.renderShinobies() }
+                    </div>
+                );
+            }
+        }
+
+        ReactDOM.render(
+            <App/>,
+            document.getElementById('root')
+        );
+    </script>
+
+    
+</body>
+</html>

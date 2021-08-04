@@ -1,0 +1,20 @@
+{% extends 'registration/login_base.html' %}
+{%block title%} Logged out {%endblock%}
+
+
+
+
+
+{% block content %}
+    <h1>Вы вышли из сеанса</h1>
+
+    <a href="{% url 'login' %}">
+        <input class="dws-submit" type="submit"  value="Войти">
+    </a>
+
+    <a href="{% url 'wiki:index' %}">
+        <input class="dws-submit" type="submit"  value="Главная">
+    </a>
+
+
+{% endblock %}

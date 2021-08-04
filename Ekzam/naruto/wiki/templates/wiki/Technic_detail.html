@@ -1,0 +1,45 @@
+{% extends 'wiki/content_base.html' %}
+{% block title %} NarutoWiki {% endblock %}
+
+
+
+
+
+{%block content%}
+<h1 class="text-center ">{{technic}}</h1>
+<div class="row">
+
+    <div class="col-4">
+            <img src="{{ technic.picture.url }}" class="img-fluid">
+            <h5 class="text-center ">
+                    {{technic.chakra}}
+            </h5>
+    </div>
+
+
+
+    <div class="col-6">
+        <h4>О технике</h4>
+        {% if technic.description %}
+            <h5>{{technic.description.read.decode}}</h5>
+        {% endif %}
+    </div>
+
+    <div class="col-2">
+        <h4>Пользователи</h4>
+
+        {% for shinobi in technic.shinobi_set.all%}
+            <a href="{% url 'wiki:Shinobi_detail' shinobi.id %}">
+                <p>{{shinobi}}</p>
+            </a>
+        {%endfor%}
+
+    </div>
+
+
+</div>
+
+
+{% endblock %}
+
+

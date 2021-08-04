@@ -1,0 +1,26 @@
+{% extends 'wiki/Login_base.html' %}
+{%block title%} Log in {%endblock%}
+
+
+{% block content %}
+
+
+        <form>
+            <div class="dws-input">
+                <input type="text" name="username" placeholder="Введите Login">
+            </div>
+            <div class="dws-input">
+                <input type="password" name="password" placeholder="Введите пароль">
+            </div>
+
+                <input class="dws-submit" type="submit" name="sumbit" value="Войти">
+
+                <br/>
+                <a href="{% url 'wiki:index'%}">Назад</a>
+                <br/>
+                <a href="{% url 'wiki:Registration'%}">Регистрация</a>
+
+        </form>
+
+
+{% endblock %}

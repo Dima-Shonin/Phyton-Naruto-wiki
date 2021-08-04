@@ -1,0 +1,27 @@
+{% extends 'wiki/content_base.html' %}
+{% block title %} NarutoWiki {% endblock %}
+
+
+
+
+
+{%block content%}
+<div class=" row ">
+    {%for village in villages%}
+    <div class="col-6" >
+        <img src="{{ village.picture.url }}" width="350" height="200"  class="rounded mx-auto d-block">
+
+          <h4 class="text-center ">
+            <a    href="{% url 'wiki:Village_detail' village.id %}">
+              {{village}}
+            </a>
+          </h4>
+    </div>
+    {%endfor%}
+</div>
+
+
+
+{% endblock %}
+
+

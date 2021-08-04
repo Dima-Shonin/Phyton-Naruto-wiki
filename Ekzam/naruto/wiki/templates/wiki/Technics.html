@@ -1,0 +1,28 @@
+{% extends 'wiki/content_base.html' %}
+{% block title %} NarutoWiki {% endblock %}
+
+
+
+
+
+{%block content%}
+
+
+<div class=" row ">
+    {%for technic in technics%}
+    <div class="col-6" >
+        <img src="{{ technic.picture.url }}" width="350" height="200"  class="rounded mx-auto d-block">
+
+          <h4 class="text-center ">
+            <a    href="{% url 'wiki:Technic_detail' technic.id %}">
+              {{technic}}
+            </a>
+          </h4>
+    </div>
+    {%endfor%}
+</div>
+
+
+{% endblock %}
+
+

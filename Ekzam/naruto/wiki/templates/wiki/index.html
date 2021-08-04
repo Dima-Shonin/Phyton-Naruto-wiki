@@ -1,0 +1,76 @@
+{% extends 'wiki/base.html' %}
+{% block title %} NarutoWiki {% endblock %}
+
+
+
+{%block content%}
+
+
+    <div class="left frosted-glass-effect-dark">
+        <ul class="left-text" > Архив
+        <li> <a id="color_wite" href="{% url 'wiki:Villages'%}"  > Деревни </a></li>
+        <li> <a id="color_wite" href="{% url 'wiki:Shinobies'%}"  > Персонажи </a></li>
+        <li> <a id="color_wite" href="{% url 'wiki:Technics'%}"  > Техники </a></li>
+        <li> <a id="color_wite" href="{% url 'wiki:Battles'%}"  > Битвы </a></li>
+        </ul>
+        <div  id="invoer">
+            <form   class="left-form" name="Chakra_test" action="" method="post">
+                    Любимая природа чакры:  <br />
+                    <input type="radio" name="Chakra" value="Огня" /> Като́н(Огонь)<br />
+                    <input type="radio" name="Chakra" value="Ветра" /> Фууто́н(Ветер)<br />
+                    <input type="radio" name="Chakra" value="Молнии" /> Райто́н(Молния)<br />
+                    <input type="radio" name="Chakra" value="Земли" /> Дото́н(Земля)<br />
+                    <input type="radio" name="Chakra" value="Воды" /> Суйто́н(Вода)<br />
+            </form>
+        </div>
+    </div>
+    <div class="center  frosted-glass-effect">
+            <h2 id="yellow" style=" margin:0">Про мир</h2>
+        <div class="center_text">
+               <p style="margin-left: 25px; margin:0">Действие всей серии «Наруто» разворачивается в вымышленном мире, социально-политической структурой напоминающем </p> феодальную Японию. Небольшие по размеру государства в нём действуют и развиваются как самостоятельные единицы, управляемые феодалами-даймё.
+               <p style="margin-left: 25px; margin:0">  Государства имеют в своём распоряжении скрытые деревни , поселения ниндзя, во главе которых стоит независимый правитель — </p> Кагэ. Ниндзя используются в качестве военной силы, а также участвуют в экономической жизни государства, выполняя оплачиваемые миссии — от прополки огородов до вылазок на вражескую территорию.
+               <p style="margin-left: 25px; margin:0">  В отсутствие достижений военной промышленности персонажи полагаются на сюрикэны, кунаи, мечи и собственные </p> специальные способности, которые включают использование чакры — магической энергии, равнозначной энергии ци, и жестов для её контроля — печатей. Использование чакры подчиняется строгим правилам, которые Кисимото ввёл для того, чтобы иметь возможность легко объяснять повороты сюжета. Автор высказывал опасения, что чакра и складывание печатей, основанных на заимствованных из Китая знаках зодиака, делают мангу «слишком японской», однако сам он доволен ею.
+
+            <div class="  center-conteiner">
+
+            </div>
+        </div>
+    </div>
+
+<div class="right  frosted-glass-effect-dark">
+            {{technic}} <hr>
+            <img src="{{ technic.picture.url }}" class="img-fluid div1">
+
+
+           <p class="right-text" style="margin: 0" >Технику использует :
+               {% for shinobi in technic.shinobi_set.all%}
+               {{shinobi}}
+               {%endfor%}
+               </p>
+            <p class="right-text" style="margin: 0" >
+           Природа чакры :
+           {{technic.chakra}}
+           </p>
+
+           <p class="right-text" style="margin: 0" >
+           Описание : <br>
+           {{technic.description.read.decode}}
+           </p>
+</div>
+
+
+
+
+
+
+{%endblock%}
+
+
+
+{%block advertising%}
+<div class="fotter container-fotter  frosted-glass-effect-red ">
+
+<div  id="con3"><h1><a id="yellow" href="mailto:shonin273@gmail.com">shonin273@gmail.com</a> </h1></div>
+
+</div>
+{%endblock%}
